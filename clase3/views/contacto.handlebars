@@ -1,0 +1,16 @@
+
+{{>menu tipo='segundo'}}
+
+
+{{#with curso}}
+    <p>este curso se llama {{nombre}}, y tiene {{cant}} alumnos</p>
+{{/with}}
+
+
+<ul>
+    {{#each nombres}}
+        <li>
+            {{this}}
+        </li>
+    {{/each}}
+</ul>

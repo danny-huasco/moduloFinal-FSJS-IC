@@ -1,0 +1,20 @@
+
+{{#if usuario}}
+    {{#with usuario}}
+    <p class="lead">buenas, {{nombre}} de cargo {{cargo}}</p>
+    {{/with}}
+
+    <p>esto vendiste hoy</p>
+    <ol>
+        {{#each ventas}}
+            <li>{{this}}</li> 
+        {{/each}}
+    </ol>
+
+{{else}}
+    <p>nadie se registro</p>
+{{/if}}
+
+{{#unless usuario}}
+    <h2>aqui no hay nadie</h2>
+{{/unless}}
