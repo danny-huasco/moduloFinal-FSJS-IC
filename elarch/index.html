@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <img src="/fotos/imagen1.jpg" id="imagen1" height="100" />
+  <img src="/fotos/imagen2.jpg" id="imagen2" height="100" />
+  <img src="/fotos/imagen3.jpg" id="imagen3" height="100" />
+  
+</body>
+</html>
+
+
+<script>
+  const imagenes = Array.from(document.getElementsByTagName("img"));
+  imagenes.forEach((img) =>
+    img.addEventListener("click", (e) => {
+      fetch("http://localhost:3000/imagen/" + e.target.id, {
+        method: "DELETE",
+      })
+    })
+  );
+</script>
