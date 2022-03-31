@@ -1,0 +1,70 @@
+{
+
+	"Console Log":{
+		"prefix": "clg",
+		"description": "log output to console",
+		"body": "console.log($1)"
+	},
+	"for":{
+			"prefix": "forr",
+			"body": [
+				"for(let ${index}=0; ${index}<${array}.length; ${index}++){",
+				"\t${0}",
+				"}"
+			],
+			"description": "for loop"
+	},
+	"express":{
+		"prefix": "exp",
+		"body": [
+			"const express = require('express');",
+			"const app = express();",
+			"const port = process.env.port || 3000;",
+			"app.listen(port, ()=>console.log('server corriendo'));"
+		],
+		"description": "importacion de express framework"
+	},
+	"handlebars":{
+		"prefix": "hbs",
+		"body": [
+			"const hbs = require('express-handlebars');",
+			"app.set('view engine','handlebars')",
+			"app.engine('handlebars', hbs.engine({",
+				"\tlayoutsDir: __dirname + '/views',",
+				"\tpartialsDir: __dirname + '/views/componentes'",
+			"}));"
+		]
+	},
+	"body-parser":{
+		"prefix": "bodyparser",
+		"body": [
+			"const bodyParser = require('body-parser');",
+			"app.use(bodyParser.urlencoded({extended:$1}));",
+			"app.use(bodyParser.json());"	
+		]
+	},
+	"fileupload":{
+		"prefix": "efu",
+		"body": [
+			"const efu = require('express-fileupload);",
+			"app.use(efu({",
+				"\tlimits: {fileSize: 5 * 1024 * 1024 },",
+				"\tabortOnLimit: true,",
+				"\tresponseOnLimit: 'te pasaste',",
+				"\tdebug:true", 
+			"}));"
+		]
+	},
+	"callback endpoint":{
+		"prefix": "cbep",
+		"body": [
+			"(req, res)=>{",      
+			"\t$1",
+			"}"
+		]
+	}
+
+
+
+
+}

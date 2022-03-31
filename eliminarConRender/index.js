@@ -59,7 +59,6 @@ app.delete('/imagen/:archivo', (req, res)=>{
     fs.unlink( `${__dirname}/files/${archivo}`, err=>{
         err?console.log(err):console.log('ARCHIVO ELIMINADO');
     });
-    let i = archivos.indexOf(`${archivo}`);
-    archivos.splice(i,1);
-    console.log(archivos);
+    let i = archivos.indexOf(`${archivo}`);//tomar el indice del elemento en el array de archivos
+    archivos.splice(i,1);//quitar el elemento del arreglo
 })
