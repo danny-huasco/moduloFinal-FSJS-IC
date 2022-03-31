@@ -22,6 +22,7 @@
       fetch("http://localhost:3000/imagen/" + e.target.id, {
         method: "DELETE",
       })
+      .then(()=>{location.reload()})
     })
   );
 </script>

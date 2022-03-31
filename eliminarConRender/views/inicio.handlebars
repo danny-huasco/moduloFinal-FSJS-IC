@@ -1,0 +1,13 @@
+<!--aqui muestro los archivos que se van subiendo-->
+<div class="container">
+    {{#each archivos}}
+        <img src="/files/{{this}}" alt="imagen" style="width:30%;">
+    {{/each}}
+</div>
+<br><br>
+<div class="container">
+    {{>formulario }}
+    <br><br><br>
+    {{>elimina }}
+</div>
+

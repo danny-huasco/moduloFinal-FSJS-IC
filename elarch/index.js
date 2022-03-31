@@ -15,7 +15,7 @@ app.get('/', (req, res)=>{
 app.delete('/imagen/:foto', (req, res)=>{
     let nombre = req.params.foto;
     fs.unlink(`${__dirname}/imagenes/${nombre}.jpg`, (err)=>{
-        if(err) console.log(err);
+        if(err){ console.log(err);}
         res.send('la imagen se elimino con exito');
     })
 })

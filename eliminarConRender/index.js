@@ -7,13 +7,16 @@ app.listen(port, ()=>console.log('server corriendo'));
 //handlebars
 const hbs = require('express-handlebars');
 app.set('view engine','handlebars')
-app.engine(hbs.engine({
+app.engine('handlebars',hbs.engine({
     layoutsDir: __dirname + '/views',
     partialsDir: __dirname + '/views/componentes'
 }));
 
 //bootstrap
-app.use(express.static(__dirname+'/node_modules/bootstrap/dist/css'));
+app.use('/css',express.static(__dirname+'/node_modules/bootstrap/dist/css'));
+
+//carpeta files
+app.use('/files', express.static(__dirname+'/files'));
 
 //body parser
 const bodyParser = require('body-parser');
@@ -36,17 +39,17 @@ let archivos =[];
 
 //renderiza la vista de inicio
 app.get('/', (req, res)=>{
-    res.render('inicio');
+    res.render('inicio', {archivos});
 })
 
 //recibe la subida de un archivo
 app.post('/', (req, res)=>{
     const archivo = req.files.archivo;
-    archivos.push(archivo.name)
+    archivos.push(archivo.name);
     archivo.mv(`${__dirname}/files/${archivo.name}`, (err)=>{
         err?console.log(err):console.log('ARCHIVO SUBIDO');
     });
-    res.render('inicio', {archivos})
+    res.render('inicio', {archivos});
 })
 
 //recibe la orden de eliminar un archivo
@@ -56,7 +59,7 @@ app.delete('/imagen/:archivo', (req, res)=>{
     fs.unlink( `${__dirname}/files/${archivo}`, err=>{
         err?console.log(err):console.log('ARCHIVO ELIMINADO');
     });
-    archivos = archivos.filter(e=>e!=archivo);
-
-    res.render('inicio', {archivos});
+    let i = archivos.indexOf(`${archivo}`);
+    archivos.splice(i,1);
+    console.log(archivos);
 })

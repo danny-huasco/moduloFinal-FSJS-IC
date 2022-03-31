@@ -1,0 +1,22 @@
+<div class="container px-4">
+    <h2>Aqui hay cosas que puedes eliminar haciendo click sobre sus nombres</h2>
+
+    <div class="row gx-4">
+        <!--aqui se renderizan los nombres de los archivos en botones-->
+        {{#each archivos}}
+            <div class="col-4">                
+                    <button class="btn btn-xl btn-info" type="button">{{this}}</button>                
+            </div>
+        {{/each}}
+    </div>
+</div>
+<script>
+document.addEventListener('click', (e)=>{
+    if(e.target.type == 'button'){
+        fetch('http://localhost:3000/imagen/'+e.target.innerHTML, {
+            method: 'DELETE'
+        })
+        .then(window.location.href = 'http://localhost:3000')
+    }
+})
+</script>
