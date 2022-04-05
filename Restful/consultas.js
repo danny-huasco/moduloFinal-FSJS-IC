@@ -10,7 +10,7 @@ const pool = new Pool({
  //post new canal
 const nuevoCanal = async (canal)=>{
     try{
-        let resultado = await pool.query(`insert into canales (nombre) values ('${canal}') returning *`);
+        let resultado = await pool.query(`insert into canales (nombre) values ('$1') returning *`, [canal]);
         return resultado.rows;
     }catch(e){
         console.log(e.code +'-'+ e.details);
@@ -27,7 +27,7 @@ const nuevoCanal = async (canal)=>{
 
  const editarCanal = async (id, nombre)=>{
      try{
-        let resultado = await pool.query(`update canales set nombre = '${nombre}' where id = '${id}' returning *`);
+        let resultado = await pool.query(`update canales set nombre = '$1' where id = '$2' returning *`, [nombre, id]);
         return resultado.rows;
      }catch(e){
         console.log(e.code +'-'+e.details);

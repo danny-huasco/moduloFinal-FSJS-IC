@@ -9,11 +9,11 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 //llamar a funciones del archivo consultas.js
-const querys = require('./consultas')
+const querys = require('./consultas');
 
 app.get('/canales', async(req, res)=>{
     const resp = await querys.consultaCanales();
-    res.json(resp);
+    res.status(200).json(resp);
 })
 
 app.post('/canal', async(req, res)=>{
